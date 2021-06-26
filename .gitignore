@@ -1,4 +1,7 @@
+# folders
 .vscode
-*.pyc
-
 __pycache__
+
+# files
+*.pyc
+check_s3.py
