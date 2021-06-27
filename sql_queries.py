@@ -50,7 +50,7 @@ staging_songs_table_create = ("""
 CREATE TABLE IF NOT EXISTS staging_songs 
 (
   num_songs         INTEGER,
-  artist_id         TEXT NOT NULL,
+  artist_id         TEXT,
   artist_latitude   NUMERIC,
   artist_longitude  NUMERIC,
   artist_location   VARCHAR(500),
@@ -65,7 +65,7 @@ CREATE TABLE IF NOT EXISTS staging_songs
 songplay_table_create = ("""
 CREATE TABLE IF NOT EXISTS songplays 
 (
-songplay_id BIGINT IDENTITY(0,1) NOT NULL, 
+songplay_id BIGINT IDENTITY(0,1) PRIMARY KEY, 
 start_time  TIMESTAMP NOT NULL SORTKEY, 
 user_id     TEXT NOT NULL DISTKEY, 
 level       TEXT, 
@@ -80,7 +80,7 @@ user_agent  TEXT
 user_table_create = ("""
 CREATE TABLE IF NOT EXISTS users 
 (
-user_id     INTEGER NOT NULL, 
+user_id     INTEGER PRIMARY KEY, 
 first_name  TEXT, 
 last_name   TEXT, 
 gender      CHAR(1), 
@@ -91,7 +91,7 @@ level       TEXT
 song_table_create = ("""
 CREATE TABLE IF NOT EXISTS songs 
 (
-song_id     TEXT NOT NULL, 
+song_id     TEXT PRIMARY KEY, 
 title       VARCHAR(500), 
 artist_id   TEXT, 
 year        INTEGER, 
@@ -102,7 +102,7 @@ duration    NUMERIC
 artist_table_create = ("""
 CREATE TABLE IF NOT EXISTS artists 
 (
-artist_id   TEXT NOT NULL, 
+artist_id   TEXT PRIMARY KEY, 
 name        VARCHAR(500), 
 location    VARCHAR(500), 
 lattitude   NUMERIC, 
@@ -113,7 +113,7 @@ longitude   NUMERIC
 time_table_create = ("""
 CREATE TABLE IF NOT EXISTS time 
 (
-start_time  TIMESTAMP NOT NULL SORTKEY, 
+start_time  TIMESTAMP PRIMARY KEY SORTKEY, 
 hour        INT NOT NULL, 
 day         INT NOT NULL, 
 week        INT NOT NULL, 
