@@ -142,7 +142,7 @@ region 'us-west-2';
 # FINAL TABLES
 
 songplay_table_insert = ("""
-insert into songplays
+insert into songplays 
 (start_time, user_id, level, song_id, artist_id, session_id, location, user_agent)
 select distinct TIMESTAMP 'epoch' + se.ts/1000 * INTERVAL '1 second'  as start_time, 
        se.user_id, 
@@ -158,7 +158,7 @@ where page = 'NextSong';
 """)
 
 user_table_insert = ("""
-insert into users
+insert into users 
 (user_id, first_name, last_name, gender, level)
 select distinct se.user_id, 
        se.first_name, 
@@ -170,7 +170,7 @@ where page = 'NextSong';
 """)
 
 song_table_insert = ("""
-insert into songs
+insert into songs 
 (song_id, title, artist_id, year, duration)
 select distinct ss.song_id, 
        ss.title, 
@@ -181,7 +181,7 @@ from staging_songs ss;
 """)
 
 artist_table_insert = ("""
-insert into artists
+insert into artists 
 (artist_id, name, location, lattitude, longitude)
 select distinct ss.artist_id, 
        ss.artist_name, 
@@ -192,7 +192,7 @@ from staging_songs ss;
 """)
 
 time_table_insert = ("""
-insert into time
+insert into time 
 (start_time, hour, day, week, month, year, weekday)
 select sp.start_time, 
        EXTRACT(HOUR FROM sp.start_time), 
